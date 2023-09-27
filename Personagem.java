@@ -5,6 +5,8 @@ public class Personagem {
   private int energia = 10;
   private int sono = 0;
   private int fome = 0;
+  private int itemCacados;
+  private boolean vivo = true;
 
   // constructor padrão (lista de parâmeros vazia)
   Personagem() {
@@ -37,6 +39,8 @@ public class Personagem {
       System.out.printf("Energia do persogem %s está baixa!! (nivel de energia menor que dois)", nome);
     }
 
+    itemCacados++;
+
     // definindo o minimo como 10
     fome = Math.min(fome + 1, 10);
 
@@ -45,12 +49,12 @@ public class Personagem {
   }
 
   void comer() {
-    if (fome >= 1) {
+    if (itemCacados >= 1) {
       System.out.printf("%s está comendo\n", nome);
       --fome;
       energia = energia + 1 > 10 ? 10 : energia + 1;
     } else {
-      System.out.println(nome + " está sem fome!! (nivel de fome menor que 1)");
+      System.out.println(nome + " está sem fome ou sem itens para comer! (nivel de fome menor que 1)");
     }
   }
 
@@ -65,6 +69,18 @@ public class Personagem {
   }
 
   void exibirEstado(){
-    System.out.printf("%s: e: %d, f: %d, s: %d\n", nome, energia, fome, sono);
+    System.out.printf("%s: e: %d, f: %d, s: %d, i: %d\n", nome, energia, fome, sono, itemCacados);
+  }
+
+  boolean estaVivo(){
+    if(sono == 10 || fome == 10) {
+      morreu();
+    }
+    return vivo;
+  }
+
+  void morreu() {
+    vivo = false;
+    System.out.printf("O personagem %s morreu", nome);
   }
 }

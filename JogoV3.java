@@ -6,7 +6,7 @@ public class JogoV3{
     var gerador = new Random();
 
     // infinity loop
-    for( ; ; ) {
+    while(cacador.estaVivo() == true) {
       // sortear um numero entre 1,2 e 3
       int oQueFazer = gerador.nextInt(3) + 1;
       // se for 1, o personagem caca
