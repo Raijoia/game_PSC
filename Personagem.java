@@ -52,6 +52,7 @@ public class Personagem {
     if (itemCacados >= 1) {
       System.out.printf("%s está comendo\n", nome);
       --fome;
+      --itemCacados;
       energia = energia + 1 > 10 ? 10 : energia + 1;
     } else {
       System.out.println(nome + " está sem fome ou sem itens para comer! (nivel de fome menor que 1)");
